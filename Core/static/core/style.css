@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    /* background: var(--backgroundColor);
+    color: var(--textColor); */
+    /* z-index: -1; */
+}
+
+::-webkit-scrollbar{
+    width: 0;
+}
+
+#nav-header{
+    /* z-index: 100; */
+    min-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    /* background: var(--backimage); */
+    background: linear-gradient(90deg, red, rgb(255, 132, 132) 70%, orange, rgb(251, 204, 117) 1%);
+    /* background-size: cover; */
+    /* backdrop-filter: blur(100px); */
+}
+
+#nav-toggle{
+    text-align: center;
+}
+
+#nav-header #nav-toggle input{
+    display: none;
+}
+
+#nav-header #nav-toggle label{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#nav-header #nav-toggle label li{
+    width: 20px;
+    list-style: none;
+    border-top: 1px solid var(--textColor);
+    transition: all .5s;
+}
+
+#nav-header #nav-toggle label li:nth-child(2){
+    transition: all 0.1s;
+}
+
+
+#nav-header #nav-toggle input:checked ~ label li:first-child{
+    transform: translate(0px, 6px) rotate(45deg) scalex(1.2);
+    left: 0;
+    top: 5px;
+}
+
+#nav-header #nav-toggle input:checked ~ label li:nth-child(2){
+    visibility: hidden;
+}
+
+#nav-header #nav-toggle input:checked ~ label li:last-child{
+    transform: translate(0px, -6px) rotate(-405deg) scalex(1.2);
+    left: 0;
+    top: 5px;
+}
+
+#body-scroll{
+    position: sticky;
+    top: 0;
+    border: 2px solid var(--textColor);
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    box-shadow: 0 0 10px var(--textColor);
+}
+
+#nav{
+    overflow: hidden;
+    transform: all 1s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#nav #search-div input{
+    border: 1px solid var(--textColor);
+    outline: none;
+    padding: 10px;
+    width: 70vw;
+    text-align: center;
+    background: transparent;
+    color: var(--textColor);
+}
+
+#nav #search-div input::placeholder{
+    color: var(--textColor);
+}
+
+#nav #search-div input:focus::placeholder{
+    color: transparent;
+}
+
+#nav #search-div input::selection{
+    color: var(--backgroundColor);
+    background: var(--textColor);
+}
+
+#nav #works{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 100vh;
+    overflow-x: scroll; 
+    gap: 20px;
+    flex-wrap: nowrap;
+}
+
+#nav #works .work-card{
+    border: 1px solid var(--textColor);
+    width: 70vw;
+    padding: 10px;
+    font-size: xx-large;
+    color: var(--textColor);
+}
+
+#nav #theme input{
+    display: none;
+}
+
+#nav #theme {
+    color: var(--textColor);
+}
+
+#nav #theme label span{
+    cursor: pointer;
+    padding: 5px;
+}
+
+#nav #theme label span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#nav #theme label .themeIconActive{
+    background: var(--textColor);
+    border-radius: 100px;
+}
+
+#nav #theme label .themeIconActive i{
+    color: var(--backgroundColor);
+}
+
+/* introduction */
+
+#introduction{
+    position: relative;
+    margin: 10px;
+    border: 1px solid var(--textColor);
+    padding: 10px;
+    height: 80vh;
+}
+
+#introduction #about-me{
+    display: block;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+#introduction #my-image{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 70%;
+    background: transparent;
+}
+
+#education{
+    border: 1px solid var(--textColor);
+    display: flex;
+    gap: 10px;
+    height: 30px;
+}
+
+#education .edu-card{
+    display: relative;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid var(--textColor);
+    height: 30px;
+}
+
+#education .edu-card ion-icon{
+    position: absolute;
+    opacity: 0.2;
+}
+
+#education .edu-card p{
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.s{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.s:nth-child(2n-1){
+    background: linear-gradient(90deg, orange, rgb(251, 204, 117) 70%, red, rgb(255, 132, 132) 1%);
+}
+
+.s:nth-child(2n){
+    background: linear-gradient(90deg, red, rgb(255, 132, 132) 70%, orange, rgb(251, 204, 117) 1%);
+}

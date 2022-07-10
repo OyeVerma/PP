@@ -1,0 +1,96 @@
+<header id="nav-header" style="--backimage:url('https://picsum.photos/200/300');">
+    <div id='nav-toggle'>
+        <input type="checkbox" name="toggle-nav" id="toggle-nav">
+        <label for="toggle-nav">
+            <li></li>
+            <li></li>
+            <li></li>
+        </label>
+    </div>
+    {% comment %} <span id="body-scroll"></span> {% endcomment %}
+    <section id="nav">
+        <div id="search-div">
+            <input type="text" placeholder='Search...'>
+        </div>
+
+        {% comment %} <div id="works">
+            <div class="work-card">01</div>
+            <div class="work-card">02</div>
+            <div class="work-card">03</div>
+            <div class="work-card">04</div>
+            <div class="work-card">05</div>
+            <div class="work-card">01</div>
+            <div class="work-card">02</div>
+            <div class="work-card">03</div>
+            <div class="work-card">04</div>
+            <div class="work-card">05</div>
+            <div class="work-card">01</div>
+            <div class="work-card">02</div>
+            <div class="work-card">03</div>
+            <div class="work-card">04</div>
+            <div class="work-card">05</div>
+            <div class="work-card">01</div>
+            <div class="work-card">02</div>
+            <div class="work-card">03</div>
+            <div class="work-card">04</div>
+            <div class="work-card">05</div>
+            <div class="work-card">01</div>
+            <div class="work-card">02</div>
+            <div class="work-card">03</div>
+            <div class="work-card">04</div>
+            <div class="work-card">05</div>
+        </div> {% endcomment %}
+        <div id="theme">
+            <input type="checkbox" name="theme" id="themeInput" checked>
+            <label for="themeInput">
+                <span id="themeIcon">
+                    <i class="fa fa-moon"></i>
+                </span>
+            </label>
+        </div>
+    </section>
+</header>
+
+<script>
+    {% comment %} let scroller = document.getElementById('body-scroll')
+    scroller.style.height = 'none'
+    window.onscroll = function (e) {
+        w = window.scrollY * 100 / document.body.scrollHeight
+        scroller.style.width = w + '%';
+        if (w==0){
+            scroller.style.display = 'none'
+        } else {
+            scroller.style.display = ''
+        }
+    }; {% endcomment %}
+
+
+
+    let navToggler = document.getElementById('toggle-nav')
+    let navSection = document.getElementById('nav')
+
+    navSection.style.height = 0
+    navToggler.addEventListener('click', function(){
+        if (navToggler.checked) {
+            navSection.style.height = '100vh'
+        } else {
+            navSection.style.height = '0'
+        }
+
+    })
+    
+
+    {% comment %} theme {% endcomment %}
+
+    let themeInput = document.getElementById('themeInput')
+    let themeIcon = document.getElementById('themeIcon')
+
+    themeInput.addEventListener('click', function(e){
+        if (themeInput.checked) {
+            themeIcon.classList.add('themeIconActive')
+        } else {
+            themeIcon.classList.remove('themeIconActive')
+        }
+    })
+
+</script>

@@ -1,0 +1,16 @@
+{% extends 'studym/base.html' %}
+{% load widget_tweaks %}
+
+{% block body %}
+
+<div id="text"></div>
+<section class="flex flex-col justify-center items-center min-h-screen bg-black gap-2">
+    {% url 'stack-file-upload' as topicFileUrl %}
+    <form action="" method="post" class="flex flex-col gap-3" hx-encoding="multipart/form-data" hx-post={{topicFileUrl}} hx-target="#text" hx-swap="outerHTML"> {% csrf_token %}
+        {% render_field form.file hidden=True %}
+        <label for="id_file" class="text-[orange] text-center cursor-pointer p-2 border-2 border-[orange] rounded-lg">Select File</label>
+        <button type="submit" class="text-center text-[orange] p-2 border-2 border-[orange] rounded-lg"><i class="fa-solid fa-arrow-up-from-bracket"></i></button>
+    </form>
+</section>
+
+{% endblock body %}

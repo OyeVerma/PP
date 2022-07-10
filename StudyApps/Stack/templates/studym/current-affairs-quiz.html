@@ -1,0 +1,28 @@
+{% extends 'studym/base.html' %}
+
+{% block body %}
+<section class="min-w-screen min-h-screen flex flex-col items-center justify-center">
+{% for q in page.object_list %}
+<div class="flex flex-col gap-2 min-w-screen min-h-screen justify-center items-center p-2">
+    <p class="p-1">{{q.question}}</p>
+    {% for option in q.options %}
+    <p class="px-2 py-4 rounded-lg bg-slate-200 border-slate-100 border-2 w-full text-center hover:border-slate-300 duration-500 answer">{{option}}</p>
+    {% endfor %}
+    <input type="hidden" name="correct-answer" class="correct-answer" value="{{q.answer}}">
+</div>
+</section>
+
+{% endfor %}
+
+<script>
+    $('.answer').on('click', function(){
+        let op = $(this).text()
+        let ans = $(this).parent().children('.correct-answer').val()
+        if (op==ans) {
+            $(this).css({'background':'green'})
+        } else {
+            $(this).css({'background':'red'})
+        }
+    })
+</script>
+{% endblock body %}

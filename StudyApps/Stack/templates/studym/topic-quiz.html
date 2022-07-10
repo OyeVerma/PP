@@ -1,0 +1,31 @@
+{% extends 'studym/base.html' %}
+
+{% block body %}
+
+<section class="flex flex-col justify-center items-center p-2 gap-2 min-h-screen">
+    <p class="p-2">{{topicquiz.0|title}}</p>
+    {% for o in topicquiz.1 %}
+    <button ans={{topicquiz.2}} class="option-btn p-2 text-center border-2 rounded-lg">{{o|safe|title}}</button>
+    {% endfor %}
+</section>
+
+{% endblock body %}
+
+{% block script %}
+
+<script>
+    
+$('.option-btn').on('click', function(){
+    let op_clicked = $(this).text();
+    let ans = $(this).attr('ans');
+    console.log(op_clicked.trim().toLowerCase(), 'Correct Answer', ans.trim().toLowerCase())
+    if (op_clicked.trim().toLowerCase()==ans.trim().toLowerCase()) {
+        $(this).css({'background':'rgb(0, 255, 0)'});
+    } else {
+        
+        $(this).css({'background':'rgb(255, 0, 0)'});
+    }
+})
+</script>
+
+{% endblock script %}

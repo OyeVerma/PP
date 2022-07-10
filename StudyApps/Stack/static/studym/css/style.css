@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*
+{
+    margin: 0;
+    /* background: #353839; */
+    font-family: 'Poppins', sans-serif;
+}
+
+body::-webkit-scrollbar {
+    width: 1px;
+    position: absolute;
+}
+
+.topicForm
+{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;    
+}
+
+.inputBox
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.inputFileBox label
+{
+    padding: 15px;
+    outline: none;
+    border: 1px solid var(--secondaryColor);
+    border-radius: 10px;
+    background: var(--backColor);
+    color: var(--secondaryColor);
+    text-transform: uppercase;
+    /* letter-spacing: 3px; */
+    cursor: pointer;
+}
+
+.inputBox .input
+{
+    width: 100%;
+    padding: 15px;
+    outline: none;
+    border: 1px solid var(--secondaryColor);
+    /* border-radius: 10px; */
+    background: transparent;
+}
+
+.inputBox .input::selection
+{
+    background-color: var(--primaryColor);
+    color: var(--backColor);
+}
+
+.inputBox .error
+{
+    text-align: center;
+    color: var(--primaryColor);
+    transform: translateY(-5px);
+    font-weight: bolder;
+    
+}
+
+.inputBox textarea::-webkit-scrollbar
+{
+    width: 0;
+}
+
+.inputBox label
+{
+    position: absolute;
+    text-transform: uppercase;
+    /* left: 15px; */
+    /* top: 0; */
+    /* padding: 15px; */
+    transition: all 0.3s;
+    color: var(--secondaryColor);
+    letter-spacing: 1px;
+    pointer-events: none;
+    /* text-align: center; */
+}
+
+.inputBox .input:focus ~ label
+{
+    top: 15px;
+    transform: translatex(-5px) translatey(-25px);
+    background: var(--backColor);
+    padding: 0 10px;
+    border: 1px solid var(--primaryColor);
+    border-top: 0;
+    border-bottom: 0;
+    color: var(--primaryColor);
+    letter-spacing: 2px;
+    font-weight: bolder;
+    border-width: 2px;
+}
+
+.inputBox .label-active
+{
+    top: 15px;
+    transform: translatex(-5px) translatey(-25px);
+    background: inherit;
+    padding: 0 10px;
+    border: 1px solid var(--primaryColor);
+    /* border-radius: 5px; */
+    border-top: 0;
+    border-bottom: 0;
+    color: var(--backColor);
+    background: var(--primaryColor);
+    letter-spacing: 2px;
+    font-weight: bolder;
+    border-width: 2px;
+}
+
+.inputBox .input-active
+{
+    border-color: var(--primaryColor);
+    border-width: 2px;
+    color: var(--primaryColor);
+}
+
+.inputBox .input:focus
+{
+    border-color: var(--primaryColor);
+    color: var(--primaryColor);
+    border-width: 2px;
+}
+
+.error
+{
+    position: absolute;
+    bottom: -14px;
+    padding: 0 10px;
+    border: 1px solid var(--primaryColor);
+    border-top: 0;
+    border-bottom: 0;
+    background: var(--backColor);
+}
+
+.topicForm button
+{
+    padding: 15px;
+    font-weight: bolder;
+    outline: none;
+    border: 1px solid var(--primaryColor);
+    cursor: pointer;
+    color: var(--primaryColor);
+    transition: all 0.5s;
+    width: 100%;
+}
+
+.topicForm button:hover
+{
+    color: var(--backColor);
+    background: var(--primaryColor);
+}
+
+.topicForm button:focus
+{
+    background: var(--primaryColor);
+    color: var(--backColor);
+
+}
+    
+.topicForm button:disabled
+{
+    cursor: not-allowed;
+}
+
+.topic-obj
+{
+
+    background-image: var(--imageUrl);
+}
+
+.topic-obj:hover
+{
+    backdrop-filter: blur(4px);
+}
