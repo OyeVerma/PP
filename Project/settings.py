@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Core',
-    'StudyApps.Stack'
+    'Stack'
 ]+[
     'widget_tweaks'
 ]
@@ -66,7 +66,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'Core.template_processors.theme'
+                'Core.template_processors.theme',
+                'Stack.processors.getThemeColor'
             ],
         },
     },

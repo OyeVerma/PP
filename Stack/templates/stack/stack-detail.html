@@ -1,0 +1,65 @@
+{% extends 'stack/base.html' %}
+
+{% block body %}
+<section class="stack">
+    <div class="stackHead">
+            <div class="stackTitle">{{stack.title}}</div>
+            <div class="stackHeadEdit">
+                <a href="{% url 'stack-update' stack.slug %}"> <i class="fa-solid fa-pen"></i> </a>
+            </div>
+            
+        </div>
+        <div class="stackBody">
+            
+            {% include 'stack/partials/stack-detail-body.html' %}
+
+        </div>
+        <div class="stackEventNew">
+            <input type="checkbox" id="stackEventNewInput">
+            <label for="stackEventNewInput" id="stackEventNewInputLabel">
+                <i class="fa-solid fa-plus"></i>
+            </label>
+            <form action="" class="stackEventNewForm"> {% csrf_token %}
+                {% comment %} <textarea></textarea> {% endcomment %}
+                {{eventform.text}}
+                <button id="stackEventFormBtn" type="submit" hx-target=".stackBody" hx-post="{% url 'stack-create-new-event' stack.slug %}"><i class="fa-solid fa-plus"></i></button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        function showEventForm(){
+            console.log($('#stackEventNewInput').prop('checked'))
+            if ($('#stackEventNewInput').prop('checked')) {
+                $('.stackEventNewForm').show(300)
+                $('#id_text').focus()
+            } else{
+                $('.stackEventNewForm').hide(300)
+            }
+        }
+        showEventForm()
+        $('#stackEventNewInput').on('change', showEventForm)
+
+        function addEventFocus(){
+            $('#stackEventNewInput').prop('checked', 'true')
+            $('.stackEventNewForm').show(300);
+            $('#id_text').focus()
+            $('#id_text').text('')
+            document.getElementById('id_text').scrollIntoView();
+        }
+        Mousetrap.bind('-', addEventFocus);
+        
+        $('.stackBody').on('DOMSubtreeModified', function(){
+            $('#id_text').val('')
+            $('#id_text').focus()
+        })
+        $('#stackEventNewLabel').click(showEventForm())
+        
+        $('.stackHeadEdit').hide()
+        $('.stackTitle').click(function(){
+            $('.stackHeadEdit').toggle(300)
+        })
+
+    </script>
+
+{% endblock body %}

@@ -1,0 +1,7 @@
+{% load studymFilters %}
+{% for stack in stackSearchResults %}
+<a href="{% url 'stack-detail' stack.slug %}" title="{{stact.title}}" class="flex flex-row stack-obj relative text-center text-white border-[1px] group hover:scale-105 focus:scale-105 outline-none border-[{{themeColor.1}}] text-[{{themeColor.0}}] focus:border-[{{themeColor.2}}] duration-500">
+    {% comment %} <img src="{{stack.image_url}}" alt="" class="h-full w-10 border-r-[{{themeColor.0}}] border-[1px] lg:w-20 aspect-square"> {% endcomment %}
+    <p class="w-full flex flex-col justify-center items-center text-center font-bold overflow-none p-2 text-[{{themeColor.1}}] group-focus:text-[{{themeColor.0}}] group-focus:border-0 bg-[{{themeColor.0}}] group-focus:bg-[{{themeColor.2}}]">{{stack.title}}</p>
+</a>
+{% endfor %}

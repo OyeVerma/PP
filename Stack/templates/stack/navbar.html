@@ -1,0 +1,59 @@
+<div class="w-full flex flex-row justify-center items-center my-3 gap-[5px]">
+    <div class="inputBox flex flex-col w-full md:w-1/2 lg:w-1/3">
+        <input class="input" id="searchBox" type="text" name="q" autocomplete="new-password" class="p-2 outline-none border-2 w-full rounded-lg" autocomplete="new-password" hx-get="{% url 'stack-search' %}" hx-trigger="keyup changed delay:500ms" hx-target="#search-results">
+        <label for="searchBox" class="text-black">Search</label>
+        <small class="error" id="num-search-results"></small>
+    </div>
+    <a href="{% url 'stack-create' %}" class="border-[1px] border-[{{themeColor.1}}] p-[15px]" id="stack-create-anchor">
+        <i class="fa-solid fa-plus"></i>
+    </a>
+</div>
+
+<div class="flex justify-center items-center w-full">
+    <div id="search-results" class="grid grid-cols-1 w-full md:w-1/2 lg:w-1/3 gap-1 justify-center items-center">
+    </div>    
+</div>
+<script>
+    $('.input').on('change', function(){
+        let value = $(this).val();
+            if (value.length) {
+                $(this).addClass('input-active');
+                $(this).parent().children('label').addClass('label-active');
+            } else {
+                $(this).removeClass('input-active');
+                $(this).parent().children('label').removeClass('label-active');
+                $('#num-search-results').html(value);
+        
+            }
+    })
+
+    $('#search-results').on('DOMSubtreeModified', function(){
+        let lenSearchResults = $('#search-results').children().length
+        let themePrimaryColor = 'white'
+        if (lenSearchResults) {
+            let smallText = `${lenSearchResults} Matching stacks Found`
+            $('#num-search-results').html(smallText)
+            $(this).css({'padding-bottom':'10px'})
+        } else {
+            $(this).css({'padding-bottom':'0'})
+            $('#num-search-results').html('No Matching stacks')
+            
+        }
+
+    })
+
+    $('.stack-obj').each((i, element) => {
+        let title = $(element).children('p').text()
+        $(element).attr('title', title);
+    })
+
+    function searchFocus() {
+        var search = $('#searchBox');
+        search.val('');
+        search.focus();
+        search.val('');
+      }
+
+    Mousetrap.bind('/', searchFocus);
+    Mousetrap.bind('ctrl+/', searchFocus);
+</script>

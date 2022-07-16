@@ -19,7 +19,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Core.urls')),
-    path('study-apps/', include('StudyApps.Stack.urls'))
+    path('stack/', include('Stack.urls'))
 ]
 
 from django.conf import settings

@@ -1,0 +1,406 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+*
+{
+    margin: 0;
+    background: var(--backColor);
+    color: var(--textColor);
+    font-family: 'Poppins', sans-serif;
+}
+
+body::-webkit-scrollbar {
+    width: 1px;
+    position: absolute;
+}
+
+.topicForm
+{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;    
+}
+
+.inputBox
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.inputFileBox label
+{
+    padding: 15px;
+    outline: none;
+    border: 1px solid var(--textColor);
+    border-radius: 10px;
+    background: var(--highlightColor);
+    color: var(--textColor);
+    text-transform: uppercase;
+    /* letter-spacing: 3px; */
+    cursor: pointer;
+}
+
+.inputBox .input
+{
+    width: 100%;
+    padding: 15px;
+    outline: none;
+    border: 1px solid var(--textColor);
+    /* border-radius: 10px; */
+    background: transparent;
+}
+
+.inputBox .input::selection
+{
+    background-color: var(--backColor);
+    color: var(--highlightColor);
+}
+
+.inputBox .error
+{
+    text-align: center;
+    color: var(--highlightColor);
+    transform: translateY(-5px);
+    font-weight: bolder;
+    
+}
+
+.inputBox textarea::-webkit-scrollbar
+{
+    width: 0;
+}
+
+.inputBox label
+{
+    position: absolute;
+    text-transform: uppercase;
+    /* left: 15px; */
+    /* top: 0; */
+    /* padding: 15px; */
+    transition: all 0.3s;
+    color: var(--textColor);
+    letter-spacing: 1px;
+    pointer-events: none;
+    /* text-align: center; */
+}
+
+.inputBox .input:focus ~ label
+{
+    top: 15px;
+    transform: translatex(-5px) translatey(-25px);
+    background: var(--backColor);
+    padding: 0 10px;
+    border: 1px solid var(--highlightColor);
+    border-top: 0;
+    border-bottom: 0;
+    color: var(--highlightColor);
+    letter-spacing: 2px;
+    font-weight: bolder;
+    border-width: 2px;
+}
+
+.inputBox .label-active
+{
+    top: 15px;
+    transform: translatex(-5px) translatey(-25px);
+    background: inherit;
+    padding: 0 10px;
+    border: 1px solid var(--highlightColor);
+    /* border-radius: 5px; */
+    border-top: 0;
+    border-bottom: 0;
+    color: var(--backColor);
+    background: var(--highlightColor);
+    letter-spacing: 2px;
+    font-weight: bolder;
+    border-width: 2px;
+}
+
+.inputBox .input-active
+{
+    border-color: var(--highlightColor);
+    border-width: 2px;
+    color: var(--highlightColor);
+}
+
+.inputBox .input:focus
+{
+    border-color: var(--highlightColor);
+    color: var(--highlightColor);
+    border-width: 2px;
+}
+
+.error
+{
+    position: absolute;
+    bottom: -14px;
+    padding: 0 10px;
+    border: 1px solid var(--highlightColor);
+    color: var(--highlightColor);
+    border-top: 0;
+    border-bottom: 0;
+    background: var(--backColor);
+}
+
+.topicForm button
+{
+    padding: 15px;
+    font-weight: bolder;
+    outline: none;
+    border: 1px solid var(--highlightColor);
+    cursor: pointer;
+    color: var(--highlightColor);
+    transition: all 0.5s;
+    width: 100%;
+  }
+
+.topicForm button:hover
+{
+    color: var(--backColor);
+    background: var(--highlightColor);
+}
+
+.topicForm button:focus
+{
+    background: var(--highlightColor);
+    color: var(--backColor);
+
+}
+    
+.topicForm button:disabled
+{
+    cursor: not-allowed;
+}
+
+.topic-obj
+{
+
+    background-image: var(--imageUrl);
+}
+
+.topic-obj:hover
+{
+    backdrop-filter: blur(4px);
+}
+
+/* Stack-Detail */
+
+
+.stack {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .stackHead {
+    z-index: 1;
+    width: 100%;
+  }
+  .stackHead .stackTitle {
+    pointer-events: none;
+    padding: 10px;
+    background: var(--highlightColor);
+    text-align: center;
+    font-size: 50px;
+    color: var(--backColor);
+    font-weight: 900;
+  }
+
+  .stackHead .stackTitle::selection{
+    background: var(--highlightColor);
+  }
+  @media screen and (max-width: 425px) {
+    .stackHead .stackTitle {
+      letter-spacing: -3px;
+      font-size: 30px;
+    }
+  }
+  @media screen and (min-width: 425px) and (max-width: 770px) {
+    .stackHead .stackTitle {
+      letter-spacing: -5px;
+      font-size: 60px;
+    }
+  }
+
+  .stackHeadEdit{
+    background: var(--highlightColor);
+    color: var(--backColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+  }
+
+  .stackHeadEdit a{
+    background: var(--highlightColor);
+    
+  }
+  .stackHeadEdit a i{
+    background: var(--highlightColor);
+    color: var(--backColor);
+  }
+  
+  .stackBody {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 10px;
+  }
+
+  .stackEvent{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 5px;
+  }
+  
+  .stackEventText {
+    display: flex;
+    position: relative;
+    padding: 20px;
+    border: 1px solid var(--textColor);
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .stackEvent .stackEventUser {
+    width: 10%;
+    position: absolute;
+    font-size: 15px;
+    opacity: 0.1;
+    z-index: 0;
+    pointer-events: none;
+    color: var(--highlightColor);
+  }
+
+  .stackEvent .stackEventText p{
+    text-align: center;
+    line-height: 20px;
+  }
+
+  .stackEvent .stackEventText p.marked {
+    background: var(--highlightColor);
+    z-index: 1;
+    padding: 0 5px;
+    color: var(--backColor);
+    font-weight: bolder;
+    text-align: center;
+  }
+
+  .stackEvent .stackEventEdit {
+    /* display: none; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    padding: 10px;
+    border: 1px solid var(--textColor);
+  }
+  
+  #stackEventNewInput {
+    display: none;
+  }
+  
+  .stackEventNew {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--highlightColor);
+  }
+
+  .stackEventNew label {
+    cursor: pointer;
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .stackEventNew label i{
+    transition: all .5s;
+    color: var(--highlightColor);
+  }
+
+  .stackEventNew #stackEventNewInput:checked ~ label i {
+    transform: rotate(135deg);
+  }
+  .stackEventNew .stackEventNewForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 90%;
+    padding: 0 20px 20px 20px;
+  }
+  .stackEventNew .stackEventNewForm textarea {
+    resize: none;
+    padding: 10px;
+    outline: none;
+    border: 0;
+    border-bottom: 1px solid var(--textColor);
+    color: var(--textColor);
+  }
+  .stackEventNew .stackEventNewForm textarea::-webkit-scrollbar {
+    width: 0;
+  }
+  .stackEventNew .stackEventNewForm button {
+    background: var(--highlightColor);
+    padding: 10px;
+  }
+
+  .stackEventNew .stackEventNewForm textarea:focus{
+    border-color: var(--highlightColor);
+    border-width: 2px;
+  }
+
+  .stackEventNew .stackEventNewForm button i{
+    background: var(--highlightColor);
+    color: var(--backColor);
+  }
+
+/* media screens */
+@media screen and (max-width: 425px) {
+  .stackBody {
+    width: 95%;
+  }
+  .stackEventNew {
+    width: 95%;
+  }
+}
+@media screen and (min-width: 425px) and (max-width: 770px) {
+  .stackBody {
+    width: 66%;
+  }
+  .stackEventNew {
+    width: 66%;
+  }
+}
+@media screen and (min-width: 770px) {
+  .stackBody {
+    width: 50%;
+  }
+  .stackEventNew {
+    width: 50%;
+  }
+}

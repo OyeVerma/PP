@@ -1,0 +1,22 @@
+{% for event in stack.events.all %}
+
+<div class="stackEvent">
+    {% comment %} <span class="stackEventUser">{{event.user}}</span> {% endcomment %}
+    <div class="stackEventText" id="stackEventText{{forloop.counter}}">
+        {% for para in event.getTextAsPara %}
+        {{para|safe}}
+        {% endfor %}
+    </div>
+    {% if request.user == event.user %}
+    <div class="stackEventEdit">
+        <span class="cursor-pointer" hx-get="{% url 'stack-event-delete' stack.slug event.id %}" hx-target=".stackBody">
+            <i class="fa-solid fa-trash-alt"></i>
+        </span>
+        <span class="cursor-pointer" hx-get="{% url 'stack-event-update' stack.slug event.id %}" hx-target="#stackEventText{{forloop.counter}}">
+            <i class="fa-solid fa-pen"></i>
+        </span>
+    </div>
+    {% endif %}
+</div>
+
+{% endfor %}

@@ -1,0 +1,10 @@
+{% load widget_tweaks %}
+
+<form method="post" >
+    {% render_field eventform.text style="; resize: none; " %}
+    <br/>
+<div class="flex justify-around">
+        <i class="fa-solid fa-check"></i>
+        <i class="fa-solid fa-multiply" hx-get={% url 'stack-get-event' stack.slug event.id %} hx-target="#stackEventText"></i>
+</div>
+</form>

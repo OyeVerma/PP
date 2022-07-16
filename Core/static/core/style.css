@@ -4,6 +4,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    background: var(--backColor);
+    color: var(--textColor);
     /* background: var(--backgroundColor);
     color: var(--textColor); */
     /* z-index: -1; */
@@ -20,10 +22,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    /* gap: 10px; */
     padding: 10px 0;
     /* background: var(--backimage); */
-    background: linear-gradient(90deg, red, rgb(255, 132, 132) 70%, orange, rgb(251, 204, 117) 1%);
+    /* background: linear-gradient(90deg, red, rgb(255, 132, 132) 70%, orange, rgb(251, 204, 117) 1%); */
     /* background-size: cover; */
     /* backdrop-filter: blur(100px); */
 }
@@ -115,23 +117,23 @@
     background: var(--textColor);
 }
 
-#nav #works{
+#nav .apps{
+    position: relative;
+    display: flex;
+    height: 30vh;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#nav .apps .app{
+    text-decoration: none;
+    width: calc(70vw/4);
+    height: 100%;
+    border: 1px solid var(--textColor);
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    width: 100vh;
-    overflow-x: scroll; 
-    gap: 20px;
-    flex-wrap: nowrap;
-}
-
-#nav #works .work-card{
-    border: 1px solid var(--textColor);
-    width: 70vw;
-    padding: 10px;
-    font-size: xx-large;
-    color: var(--textColor);
 }
 
 #nav #theme input{
@@ -210,19 +212,4 @@
 #education .edu-card p{
     letter-spacing: 2px;
     text-transform: uppercase;
-}
-
-.s{
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-}
-
-.s:nth-child(2n-1){
-    background: linear-gradient(90deg, orange, rgb(251, 204, 117) 70%, red, rgb(255, 132, 132) 1%);
-}
-
-.s:nth-child(2n){
-    background: linear-gradient(90deg, red, rgb(255, 132, 132) 70%, orange, rgb(251, 204, 117) 1%);
 }

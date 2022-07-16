@@ -1,0 +1,20 @@
+{% extends 'stack/base.html' %}
+
+{% block body %}
+
+<section class="relative flex flex-col min-h-screen w-screen items-center p-3 gap-3 bg-[{{themeColor.0}}]">
+    
+<div class="flex flex-col w-full gap-2 text-center">
+    <div class="w-full justify-center text-center grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
+        {% for stack in stacks %}
+        <a href="{% url 'stack-detail' stack.slug %}" class="flex flex-row group stack-obj relative text-center text-[{{themeColor.0}}] border-[1px] hover:scale-105 hover:border-[{{themeColor.2}}] hover:text-[{{themeColor.2}}] duration-500">
+            <img src="{{stack.image_url}}" alt="" class="h-full border-r-[1px] border-r-[{{themeColor.1}}] group-hover:border-r-[{{themeColor.2}}] group-hover:text-[{{themeColor.2}}] duration-500 w-10 lg:w-20 aspect-square object-cover">
+            <p class="w-full flex flex-col justify-center items-center text-center">{{stack.title|truncatechars:"15"}}</p>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+</section>
+
+
+{% endblock body %}

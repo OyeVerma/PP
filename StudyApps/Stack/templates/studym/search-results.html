@@ -1,7 +1,0 @@
-{% load studymFilters %}
-{% for topic in topicSearchResults %}
-<a href="{% url 'stack-detail' topic.slug %}" class="flex flex-row topic-obj relative text-center text-white border-[1px] hover:scale-105 border-[{{themeColor.0}}] text-[{{themeColor.0}}] duration-500">
-    <img src="{{topic.image_url}}" alt="" class="h-full w-10 border-r-[{{themeColor.0}}] border-[1px] lg:w-20 aspect-square">
-    <p class="w-full flex flex-col justify-center items-center text-center">{{topic.title|truncatechars:"15"}}</p>
-</a>
-{% endfor %}

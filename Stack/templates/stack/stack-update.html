@@ -1,0 +1,104 @@
+{% extends 'stack/base.html' %}
+{% load widget_tweaks %}
+{% block body %}
+
+<section class="flex flex-col items-center relative w-screen bg-[{{themeColor.0}}]">
+    <form style="--backColor:{{themeColor.0}};--textColor:{{themeColor.1}}; --highlightColor:{{themeColor.2}}" action="" method="post" class="topicForm w-full md:w-1/2 lg:w-1/3" novalidate> {% csrf_token %}
+        {% url 'stack-verify-title' as verifyTitleUrl %}
+        {% url 'stack-verify-image-url' as verifyImageUrl %}
+ 
+        <div class="inputBox">
+            {% render_field form.image_url class="input" id=form.image_url.label hx-get=verifyImageUrl hx-trigger="keyup changed delay:500ms" hx-target=".imageError" %}
+            <label for="{{form.image_url.label}}">{{form.image_url.label}}</label>
+            <small class="error imageError">{{form.image_url.errors}}</small>
+        </div>
+        <div class="inputBox">
+            {% render_field form.title class="input" id=form.title.label hx-get=verifyTitleUrl hx-trigger="keyup changed delay:500ms" hx-target=".titleError" %}
+            <label for="{{form.title.label}}">{{form.title.label}}</label>
+            <small class="error titleError">{{form.title.errors}}</small>
+        </div>
+        {% url 'stack-verify-text' as verifyTextUrl %}
+        <div class="inputBox">
+            {% render_field form.text class="input" id=form.text.label  hx-get=verifyTextUrl hx-trigger="keyup changed delay:500ms" hx-target=".textError" %}
+            <label for="{{form.text.label}}">{{form.text.label}}</label>
+            <small class="error textError">{{form.text.errors}}</small>
+        </div>
+        <button type="submit" id="button">SUBMIT</button>
+    </form>
+</section>
+
+<script>
+    function disableBtn(bool, error_in_fields){
+        if (bool==true) {
+            if (error_in_fields ==1){
+                $("button[type='submit']").text(`error in ${error_in_fields} field`.toUpperCase())
+                $("button[type='submit']").prop('disabled', true)
+
+            } else {
+
+                $("button[type='submit']").text(`error in ${error_in_fields} fields`.toUpperCase())
+                $("button[type='submit']").prop('disabled', true)
+            }
+        } else {
+            $("button[type='submit']").text('submit'.toUpperCase())
+            $("button[type='submit']").prop('disabled', false)
+        }
+    }
+
+    function verifyError(){
+        let errornums = 0
+        $('.error').each((index, element) => {
+            let error = $(element).text()
+            if (error.length) {
+                errornums ++
+            }
+        })
+        if (errornums==0) {
+            disableBtn(false, errornums)
+        } else {
+            disableBtn(true, errornums)
+        }
+    }
+
+    $(document).ready(function(){
+        $('.input').map((index, element) => {
+            let d = $(element).val();
+            if (d.length) {
+                $(element).addClass('input-active');
+                $(element).parent().children('label').addClass('label-active')
+            }
+        })
+
+
+        $('.error').each((i, element) => {
+            if ($(element).text().length) {
+                if ($(element).parent().children('.input').val().length == 0) {
+                    $(element).parent().children('.input').focus()
+                    return false
+                }
+            }
+        })
+
+    })
+
+    $('.error').on('DOMSubtreeModified', function(){
+        verifyError()
+    })
+
+    $('.input').on('change', function(){
+        let value = $(this).val();
+        {% comment %} verifyError() {% endcomment %}
+    if (value.length) {
+        $(this).addClass('input-active');
+        $(this).parent().children('label').addClass('label-active');
+    } else {
+        $(this).removeClass('input-active');
+        $(this).parent().children('label').removeClass('label-active');
+
+    };
+
+
+})
+</script>
+
+{% endblock body %}
